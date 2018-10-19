@@ -1,0 +1,559 @@
+﻿<Window x:Class="QuanLyKaraoke.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyKaraoke"
+        xmlns:uc="clr-namespace:QuanLyKaraoke.UserControlKaraoke"
+        mc:Ignorable="d" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="Phần mềm quản lý quán karaoke"  Width="auto"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="mainWindow"
+       
+        DataContext="{StaticResource mainVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBar Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBar>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--menu-->
+            <Grid Grid.Row="0">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Transparent">
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="2 4 2 4"></Setter>
+                            <Setter Property="Background" Value="LightCyan"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Command="{Binding InputCommand}" Grid.Column="0" ToolTip="Nhập kho">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Doanh thu" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Kind="CurrencyUsd" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Command="{Binding OutputCommand}" Grid.Column="1" ToolTip="Xuất kho">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Nhân viên" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Worker" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Command="{Binding ObjectCommand}" Grid.Column="2" ToolTip="Vật tư" Height="44" Margin="2,0,2,4" VerticalAlignment="Bottom">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Sản phẩm" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Dns" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="3" Command="{Binding UnitCommand}" ToolTip="Đơn vị đo">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Phòng hát" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="MicrophoneVariant" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="4" Command="{Binding SuplierCommand}" ToolTip="Nhà cung cấp">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Báo cáo" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Newspaper" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="5" Command="{Binding CustomerCommand}" ToolTip="Khách hàng">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Khách hàng" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="HumanHandsup" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="6" Command="{Binding UserCommand}" ToolTip="Người dùng">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Người dùng" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="AccountMultiple" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <!--main-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Row="0" >
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 01"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 02"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 03"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 04"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1" >
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                              
+                                             Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 05"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 06"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 07"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="52"  />
+                                    <RowDefinition Height="20*"  />
+                                    <RowDefinition Height="53*"  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 08"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                    </DockPanel>
+                    <DockPanel Grid.Row="2" >
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 09"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 10"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 11"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                    <RowDefinition  />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Phòng 12"
+                                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+
+                                </TextBlock>
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="Trống"
+                                                       Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                </TextBlock>
+                                <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                    <StackPanel>
+                                        <!--đưa gì vào thì đưa-->
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </Grid>
+                        </materialDesign:Card>
+                    </DockPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <!--filter món ăn-->
+                        <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Customer}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Loại sản phẩm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+
+                    </Grid>
+                    <DockPanel Grid.Row="1">
+                        <!--filter món ăn-->
+                        <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Customer}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Sản phẩm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                        <TextBox Text="{Binding PriceOutput, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </DockPanel>
+                    <Grid Grid.Row="2">
+                        <TextBox Text="{Binding PriceOutput, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã khách hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <materialDesign:Badged x:Name="CountingBadge" BadgeColorZoneMode="PrimaryDark">
+                            <Button Style="{StaticResource MaterialDesignRaisedLightButton}">
+                                Thêm món
+                            </Button>
+                        </materialDesign:Badged>
+                    </Grid>
+                    <!--Danh sách sản phẩm được thêm vào-->
+                    <Grid Grid.Row="4">
+                        <ListView ItemsSource="{Binding MenuList}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                                    <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                                    <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Label>Tổng tiền</Label>
+                        <Label HorizontalAlignment="Right">$400000</Label>
+                    </Grid>
+
+                </Grid>
+
+
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

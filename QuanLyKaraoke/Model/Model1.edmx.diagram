@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="82f3fb64e1654cf59570b3b02e1e06ce" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.Account" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.CaTruc" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.ChamCong" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.CoSo" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.CTHD" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.HoaDon" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.KhachHang" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.KhuyenMai" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.LoaiKH" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.LoaiNhanVien" Width="1.5" PointX="3.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.LoaiPhong" Width="1.5" PointX="3.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.LoaiSanPham" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.NhanVien" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.Phong" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.SanPham" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKaraokeModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__ChamCong__maCT__6EC0713C" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__NhanVien__maCT__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__ChamCong__maNV__6DCC4D03" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__NhanVien__maCS__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__CTHD__maSP__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__CTHD__soLuong__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__HoaDon__maPhong__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK_HoaDon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK_HoaDon_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK_KhachHang_LoaiKhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK_LoaiKH_KhuyenMai" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__NhanVien__maLoai__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__Phong__maLoai__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyKaraokeModel.FK__SanPham__gia__5EBF139D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
