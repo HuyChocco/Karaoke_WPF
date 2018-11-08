@@ -19,8 +19,8 @@ namespace QuanLyKaraoke.ViewModel
 	}
 	public class RelayCommand<T> : ICommand
 	{
-		private readonly Predicate<T> _canExecute;
-		private readonly Action<T> _execute;
+		private readonly Predicate<T> _canExecute;//Điều kiện trước khi thực hiện action của object
+		private readonly Action<T> _execute;//Thực hiện action của object sau khi điều kiện là true
 
 		//Constructor
 		public RelayCommand(Predicate<T> canExecute, Action<T> execute)

@@ -81,7 +81,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Command="{Binding ObjectCommand}" Grid.Column="2" ToolTip="Vật tư" Height="44" Margin="2,0,2,4" VerticalAlignment="Bottom">
+                    <Button Command="{Binding SanPhamCommand}" Grid.Column="2" ToolTip="Sản phẩm" Height="44" Margin="2,0,2,4" VerticalAlignment="Bottom">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
