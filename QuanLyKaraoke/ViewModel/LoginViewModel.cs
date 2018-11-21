@@ -37,9 +37,10 @@ namespace QuanLyKaraoke.ViewModel
 		{
 			if (p == null)
 				return;
-			string passEncode = MD5Hash(Base64Encode(Password));
+			string passEncode = MD5Hash(Base64Encode(Password));//Mã hóa bằng MD5
 			//var accCount=DataProvider.Ins.DB.Accounts.Where(x => x.UserName == UserName && x.PassWord == passEncode).Count();
 
+			//Khởi tạo danh sách tài khoản từ cơ sở dữ liệu
 			List<USP_Login_Result> listAccount =new List<USP_Login_Result> (DataProvider.Ins.DB.USP_Login(UserName, passEncode));
 
 			if (listAccount.Count > 0)
@@ -54,7 +55,7 @@ namespace QuanLyKaraoke.ViewModel
 				MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
 			}
 		}
-
+		//Hàm mã hóa password bằng Base64
 		public static string Base64Encode(string plainText)
 		{
 			var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
@@ -62,7 +63,7 @@ namespace QuanLyKaraoke.ViewModel
 		}
 
 
-
+		//Hàm mã hóa password bằng MD5 từ Base64
 		public static string MD5Hash(string input)
 		{
 			StringBuilder hash = new StringBuilder();
