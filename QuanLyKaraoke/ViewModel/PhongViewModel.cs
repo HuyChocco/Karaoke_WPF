@@ -78,6 +78,7 @@ namespace QuanLyKaraoke.ViewModel
 		//Các binded command
 		public ICommand AddCommand { get; set; }
 		public ICommand EditCommand { get; set; }
+		public ICommand DeleteCommand { get; set; }
 
 		//Constructor
 		public PhongViewModel()
@@ -126,8 +127,29 @@ namespace QuanLyKaraoke.ViewModel
 				phong.soPhong = SoPhong;
 				phong.maLoai = SelectedItemLoaiPhong.maLoaiPhong;
 				DataProvider.Ins.DB.SaveChanges();
-				SelectedItem.soPhong = SoPhong;
+				//SelectedItem = phong;
+				List = new ObservableCollection<Phong>(DataProvider.Ins.DB.Phongs);
+
+			});
+			//Cài đặt DeleteCommand
+			DeleteCommand = new RelayCommand<object>((p) =>
+			{
+				if (string.IsNullOrEmpty(SoPhong) || SelectedItem == null)
+					return false;
+				if (string.IsNullOrEmpty(TenLoaiPhong) || SelectedItem == null)
+					return false;
+
+				return true;
+
+			}, (p) =>
+			{
+				var phong = DataProvider.Ins.DB.Phongs.Where(x => x.maPhong == SelectedItem.maPhong).SingleOrDefault();
+				DataProvider.Ins.DB.Phongs.Remove(phong);
+				DataProvider.Ins.DB.SaveChanges();
+				//SelectedItem = phong;
+				List = new ObservableCollection<Phong>(DataProvider.Ins.DB.Phongs);
 				
+
 			});
 		}
 	}
